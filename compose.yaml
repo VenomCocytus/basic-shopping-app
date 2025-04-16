@@ -1,0 +1,6 @@
+﻿services:
+  basicshoppingcartmicroservice:
+    image: basicshoppingcartmicroservice
+    build:
+      context: .
+      dockerfile: Dockerfile
