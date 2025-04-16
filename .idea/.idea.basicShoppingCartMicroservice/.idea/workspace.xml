@@ -8,11 +8,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1848d3ed-bb64-47ef-a98b-b83f8ba7ae49" name="Changes" comment="First commit">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.basicShoppingCartMicroservice/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.basicShoppingCartMicroservice/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/basicShoppingCartMicroservice.sln" beforeDir="false" afterPath="$PROJECT_DIR$/sehkmetShoppingApp.sln" afterDir="false" />
+    <list default="true" id="1848d3ed-bb64-47ef-a98b-b83f8ba7ae49" name="Changes" comment="Update - Setting the basic structure of the shopping cart microservice">
+      <change afterPath="$PROJECT_DIR$/Models/Money.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Models/ShoppingCartItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.basicShoppingCartMicroservice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.basicShoppingCartMicroservice/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/ShoppingCart.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/ShoppingCart.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +36,6 @@
   &quot;keyToString&quot;: {
     &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -130,7 +129,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744813659348</updated>
-      <workItem from="1744813660874" duration="1430000" />
+      <workItem from="1744813660874" duration="3611000" />
     </task>
     <task id="LOCAL-00001" summary="First commit - Project Creation">
       <option name="closed" value="true" />
@@ -148,7 +147,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744813870605</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Update - Setting the basic structure of the shopping cart microservice">
+      <option name="closed" value="true" />
+      <created>1744816781434</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1744816781435</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +178,7 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="First commit - Project Creation" />
     <MESSAGE value="First commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
+    <MESSAGE value="Update - Setting the basic structure of the shopping cart microservice" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update - Setting the basic structure of the shopping cart microservice" />
   </component>
 </project>
