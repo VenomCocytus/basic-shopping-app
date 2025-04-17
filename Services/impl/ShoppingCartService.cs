@@ -2,7 +2,7 @@ using basicShoppingCartMicroservice.Models;
 
 namespace basicShoppingCartMicroservice.Services.impl;
 
-public abstract class ShoppingCartService : IShoppingCartService
+public class ShoppingCartService : IShoppingCartService
 {
 
     /*

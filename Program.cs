@@ -1,16 +1,25 @@
-var builder = WebApplication.CreateBuilder(args);
+    using basicShoppingCartMicroservice.Services;
 
-// Add services to the container.
-builder.Services.AddControllers();
+    var builder = WebApplication.CreateBuilder(args);
 
-var app = builder.Build();
+    // Add services to the container.
+    builder.Services.AddControllers();
+    // builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
+    
+    
+    builder.Services.Scan(selector => selector
+        .FromAssemblyOf<IShoppingCartService>()
+        .AddClasses()
+        .AsMatchingInterface()
+        .WithScopedLifetime());
 
+    var app = builder.Build();
 
-// Configure the HTTP Request
-// Redirect all HTTP requests to HTTPS
-app.UseHttpsRedirection();
-app.UseRouting();
+    // Configure the HTTP Request
+    // Redirect all HTTP requests to HTTPS
+    app.UseHttpsRedirection();
+    app.UseRouting();
 
-// Add all endpoints in all controllers to MVCs route table
-app.MapControllers();
-app.Run();
+    // Add all endpoints in all controllers to MVCs route table
+    app.MapControllers();
+    app.Run();

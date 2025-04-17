@@ -1,6 +1,9 @@
 @basicShoppingCartMicroservice_HostAddress = http://localhost:5188
 
-GET {{basicShoppingCartMicroservice_HostAddress}}/weatherforecast/
+GET {{basicShoppingCartMicroservice_HostAddress}}/shoppingcart/123
 Accept: application/json
 
 ###
+
+GET {{basicShoppingCartMicroservice_HostAddress}}/shoppingcart/
+Accept: application/json

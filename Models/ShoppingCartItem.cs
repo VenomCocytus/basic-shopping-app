@@ -1,6 +1,6 @@
 namespace basicShoppingCartMicroservice.Models;
 
-public abstract record ShoppingCartItem(
+public record ShoppingCartItem(
     int CatalogueId,
     string Name,
     string Description,
