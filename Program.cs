@@ -1,3 +1,5 @@
+    using basicShoppingCartMicroservice.Client;
+    using basicShoppingCartMicroservice.Client.ProductCatalog;
     using Scrutor;
 
     var builder = WebApplication.CreateBuilder(args);
@@ -8,7 +10,7 @@
     // Scanning services and classes
     // builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
     
-    // Use scrutor to scan services and classes
+    // Use Scrutor to scan services and classes
     var assemblies = AppDomain.CurrentDomain.GetAssemblies()
         .Where(assembly => !assembly.IsDynamic && 
                            assembly.GetName().Name!.StartsWith("basicShoppingCartMicroservice"))
@@ -27,6 +29,9 @@
         .UsingRegistrationStrategy(RegistrationStrategy.Skip)
         .AsMatchingInterface()
         .WithScopedLifetime());
+    
+    // Registering Http client
+    builder.Services.AddHttpClient<IProductCatalogClient, ProductCatalogClient>();
 
     var app = builder.Build();
 
