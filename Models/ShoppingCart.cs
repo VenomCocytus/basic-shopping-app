@@ -13,7 +13,7 @@ public class ShoppingCart(int userId)
             this._shoppingCartItems.Add(cartItem);
     }
 
-    public void RemoveItemToCart(int[] catalogueIds)
+    public void RemoveItemsFromCart(int[] catalogueIds)
     {
         this._shoppingCartItems
             .RemoveWhere(cartItem => 

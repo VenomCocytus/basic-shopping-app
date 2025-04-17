@@ -12,9 +12,9 @@ public partial class ShoppingCartQueryController : ControllerBase
     
     private readonly IShoppingCartService _shoppingCartService;
         
-    [HttpGet("userId:int")]
-    public ShoppingCart RetrieveShoppingCart(int userId) => 
-        _shoppingCartService.RetrieveShoppingCart(userId);
+    [HttpGet("{userId:int}")]
+    public ShoppingCart RetrieveUserShoppingCart(int userId) => 
+        _shoppingCartService.RetrieveUserShoppingCart(userId);
     
     [HttpGet]
     public List<ShoppingCart> RetrieveAllShoppingCarts() =>

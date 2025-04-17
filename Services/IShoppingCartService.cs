@@ -4,8 +4,12 @@ namespace basicShoppingCartMicroservice.Services;
 
 public interface IShoppingCartService
 {
-    ShoppingCart RetrieveShoppingCart(int shoppingCartId);
-    List<ShoppingCart> RetrieveAllShoppingCarts();
     void Save(ShoppingCart shoppingCart);
+    
+    ShoppingCart RetrieveUserShoppingCart(int userId);
+    List<ShoppingCart> RetrieveAllShoppingCarts();
+    
+    Task<ShoppingCart> AddItemsToCart(int userId, int[] shoppingCartItemIds);
+    ShoppingCart RemoveItemsFromCart(int userId, int[] shoppingCartItemIds);
     
 }
