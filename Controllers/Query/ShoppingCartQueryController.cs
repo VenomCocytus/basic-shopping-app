@@ -1,13 +1,12 @@
 using basicShoppingCartMicroservice.Models;
 using basicShoppingCartMicroservice.Services;
-using basicShoppingCartMicroservice.Services.impl;
 using Lombok.NET;
 using Microsoft.AspNetCore.Mvc;
 
 namespace basicShoppingCartMicroservice.Controllers.Query;
 
 [RequiredArgsConstructor]
-[Route("/shoppingcart")]
+[Route("/shopping-cart")]
 public partial class ShoppingCartQueryController : ControllerBase
 {
     

@@ -1,15 +1,30 @@
-    using basicShoppingCartMicroservice.Services;
+    using Scrutor;
 
     var builder = WebApplication.CreateBuilder(args);
 
     // Add services to the container.
     builder.Services.AddControllers();
+    
+    // Scanning services and classes
     // builder.Services.AddScoped<IShoppingCartService, ShoppingCartService>();
     
+    // Use scrutor to scan services and classes
+    var assemblies = AppDomain.CurrentDomain.GetAssemblies()
+        .Where(assembly => !assembly.IsDynamic && 
+                           assembly.GetName().Name!.StartsWith("basicShoppingCartMicroservice"))
+        .ToArray();
     
     builder.Services.Scan(selector => selector
-        .FromAssemblyOf<IShoppingCartService>()
-        .AddClasses()
+        .FromAssemblies(assemblies)
+        // To register a specific assembly    
+        // .FromAssemblyOf<IShoppingCartService>()
+        .AddClasses(classes => 
+                // Optional: Filter by name
+            classes.Where(type => type.Name.EndsWith("Service") 
+                                  || type.Name.EndsWith("Repository")), 
+            // Optional: Choose only public classes or not (abstract etc...)
+            publicOnly: false)
+        .UsingRegistrationStrategy(RegistrationStrategy.Skip)
         .AsMatchingInterface()
         .WithScopedLifetime());
 
