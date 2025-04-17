@@ -8,12 +8,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1848d3ed-bb64-47ef-a98b-b83f8ba7ae49" name="Changes" comment="Update - Adding some model for the shopping cart service">
-      <change afterPath="$PROJECT_DIR$/Services/impl/ShoppingCartService.cs" afterDir="false" />
+    <list default="true" id="1848d3ed-bb64-47ef-a98b-b83f8ba7ae49" name="Changes" comment="Update - Adding some interface and their implementations; Adding a query controller for the shopping cart">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.basicShoppingCartMicroservice/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.basicShoppingCartMicroservice/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Controllers/Query/ShoppingCartQueryController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Controllers/Query/ShoppingCartQueryController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ShoppingCartStore.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Services/ShoppingCartService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Services/IShoppingCartService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +18,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/a.elong/Downloads/Career/Projects/Solutions/basicShoppingCartMicroservice/Controllers/Query/ShoppingCartQueryController.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProjectColorInfo">{
@@ -130,7 +129,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744813659348</updated>
-      <workItem from="1744813660874" duration="7110000" />
+      <workItem from="1744813660874" duration="8049000" />
     </task>
     <task id="LOCAL-00001" summary="First commit - Project Creation">
       <option name="closed" value="true" />
@@ -164,7 +163,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744818360323</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Update - Adding some interface and their implementations; Adding a query controller for the shopping cart">
+      <option name="closed" value="true" />
+      <created>1744822124765</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1744822124766</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +196,7 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Update - Setting the basic structure of the shopping cart microservice" />
     <MESSAGE value="Update - Adding some model for the shopping cart service" />
-    <option name="LAST_COMMIT_MESSAGE" value="Update - Adding some model for the shopping cart service" />
+    <MESSAGE value="Update - Adding some interface and their implementations; Adding a query controller for the shopping cart" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update - Adding some interface and their implementations; Adding a query controller for the shopping cart" />
   </component>
 </project>

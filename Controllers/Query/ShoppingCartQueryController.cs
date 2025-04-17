@@ -1,5 +1,6 @@
 using basicShoppingCartMicroservice.Models;
 using basicShoppingCartMicroservice.Services;
+using basicShoppingCartMicroservice.Services.impl;
 using Microsoft.AspNetCore.Mvc;
 
 namespace basicShoppingCartMicroservice.Controllers.Query;
@@ -12,6 +13,10 @@ public class ShoppingCartQueryController(ShoppingCartService shoppingCartService
     [HttpGet("userId:int")]
     public ShoppingCart RetrieveShoppingCart(int userId) =>
         this._shoppingCartService.RetrieveShoppingCart(userId);
+    
+    [HttpGet]
+    public List<ShoppingCart> RetrieveAllShoppingCarts() =>
+        this._shoppingCartService.RetrieveAllShoppingCarts();
     
     
 }
