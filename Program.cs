@@ -31,11 +31,12 @@
         .WithScopedLifetime());
     
     // Registering Http client
-    builder.Services.AddHttpClient<IProductCatalogClient, ProductCatalogClient>()
-        //  Adding a retry policy with Polly to retry any failed calls
-        .AddTransientHttpErrorPolicy(policy => 
-            policy.WaitAndRetryAsync(3, retryAttempt => 
-                TimeSpan.FromMilliseconds(100*Math.Pow(2, retryAttempt))));
+    builder.Services.AddHttpClient<IProductCatalogClient, ProductCatalogClient>();
+    // builder.Services.AddHttpClient<IProductCatalogClient, ProductCatalogClient>()
+    //     //  Adding a retry policy with Polly to retry any failed calls
+    //     .AddTransientHttpErrorPolicy(policy => 
+    //         policy.WaitAndRetryAsync(3, retryAttempt => 
+    //             TimeSpan.FromMilliseconds(100*Math.Pow(2, retryAttempt))));
 
     var app = builder.Build();
 

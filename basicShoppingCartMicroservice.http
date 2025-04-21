@@ -7,3 +7,17 @@ Accept: application/json
 
 GET {{basicShoppingCartMicroservice_HostAddress}}/shopping-cart/
 Accept: application/json
+
+###
+
+POST {{basicShoppingCartMicroservice_HostAddress}}/shopping-cart/123/items
+Content-Type: application/json
+
+[1,2]
+
+###
+
+DELETE {{basicShoppingCartMicroservice_HostAddress}}/shopping-cart/123/items
+Content-Type: application/json
+
+[1,2]

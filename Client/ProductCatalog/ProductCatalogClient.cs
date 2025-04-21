@@ -4,15 +4,15 @@ using basicShoppingCartMicroservice.Models;
 
 namespace basicShoppingCartMicroservice.Client.ProductCatalog;
 
-public abstract class ProductCatalogClient : IProductCatalogClient
+public class ProductCatalogClient : IProductCatalogClient
 {
     
     private readonly HttpClient _httpClient;
-    private const string ProductCatalogBaseUrl = "https://catalog.catalog.core.windows.net";
+    private const string ProductCatalogBaseUrl = @"https://git.io/JeHiE";
     private const string GetProductPathTemplate = "?productIds=[{0}]";
 
     // Injecting HttpClient
-    protected ProductCatalogClient(HttpClient httpClient)
+    public ProductCatalogClient(HttpClient httpClient)
     {
         httpClient.BaseAddress = new Uri(ProductCatalogBaseUrl);
         
@@ -54,7 +54,8 @@ public abstract class ProductCatalogClient : IProductCatalogClient
         // Deserializing the JSON from the product catalog microservice
         var retrievedProducts = await JsonSerializer.DeserializeAsync<List<CatalogProduct>>(
             await responseMessage.Content.ReadAsStreamAsync(),
-            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) ?? new List<CatalogProduct>();
+            new JsonSerializerOptions { PropertyNameCaseInsensitive = true }) 
+                                ?? new();
         
         // Creating a shopping cart item for each product retrieve from the catalog microservice
         return retrievedProducts.Select(product => new ShoppingCartItem(
@@ -65,7 +66,7 @@ public abstract class ProductCatalogClient : IProductCatalogClient
             ));
     }
 
-    private abstract record CatalogProduct(
+    private record CatalogProduct(
         int ProductId,
         string Name,
         string Description,
