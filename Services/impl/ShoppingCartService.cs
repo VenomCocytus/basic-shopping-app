@@ -8,7 +8,7 @@ namespace basicShoppingCartMicroservice.Services.impl;
 [RequiredArgsConstructor]
 public partial class ShoppingCartService : IShoppingCartService
 {
-    private readonly IShoppingCartService _shoppingCartService;
+    
     private readonly IProductCatalogClient _productCatalogClient;
     private readonly IEventService _eventService;
     
@@ -41,7 +41,7 @@ public partial class ShoppingCartService : IShoppingCartService
         shoppingCart.AddItems(shoppingCartItems, _eventService);
         
         // Save the updated cart to the data store
-        this._shoppingCartService.Save(shoppingCart);
+        this.Save(shoppingCart);
         
         // Return the updated cart
         return shoppingCart;
@@ -55,7 +55,7 @@ public partial class ShoppingCartService : IShoppingCartService
         shoppingCart.RemoveItems(shoppingCartItemIds, _eventService);
         
         // Save the updated cart to the data store
-        this._shoppingCartService.Save(shoppingCart);
+        this.Save(shoppingCart);
 
         return shoppingCart;
     }

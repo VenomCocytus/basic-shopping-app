@@ -18,7 +18,7 @@
     
     builder.Services.Scan(selector => selector
         .FromAssemblies(assemblies)
-        // To register a specific assembly    
+            // To register a specific assembly    
         // .FromAssemblyOf<IShoppingCartService>()
         .AddClasses(classes => 
                 // Optional: Filter by name

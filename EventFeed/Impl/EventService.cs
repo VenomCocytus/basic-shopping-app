@@ -5,13 +5,26 @@ namespace basicShoppingCartMicroservice.EventFeed.Impl;
 
 public class EventService : IEventService
 {
-    public IEnumerable<Event> GetEvents(long firstEventSequenceNumber, long lastEventSequenceNumber)
-    {
-        throw new NotImplementedException();
-    }
+
+    private static long _currentSequenceNumber = 0;
+    private static readonly IList<Event> Database = new List<Event>();
+    
+    public IEnumerable<Event> GetEvents(long firstEventSequenceNumber, long lastEventSequenceNumber) => 
+        Database.Where(element => 
+                element.SequenceNumber == firstEventSequenceNumber && 
+                element.SequenceNumber <= lastEventSequenceNumber)
+            .OrderBy(element => element.SequenceNumber);
+    
 
     public void Raise(string eventName, object content)
     {
-        throw new NotImplementedException();
+        var sequenceNumber = Interlocked.Increment(ref _currentSequenceNumber);
+        
+        Database.Add(
+            new Event(
+                sequenceNumber,
+                DateTimeOffset.UtcNow, 
+                eventName,
+                content));
     }
 }
