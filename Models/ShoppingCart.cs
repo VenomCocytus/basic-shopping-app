@@ -1,3 +1,5 @@
+using basicShoppingCartMicroservice.EventFeed.Interface;
+
 namespace basicShoppingCartMicroservice.Models;
 
 public class ShoppingCart(int userId)
@@ -7,16 +9,21 @@ public class ShoppingCart(int userId)
     public int UserId { get; } = userId;
     public IEnumerator<ShoppingCartItem> Items => this._shoppingCartItems.GetEnumerator();
 
-    public void AddItemsToCart(IEnumerable<ShoppingCartItem> shoppingCartItems)
+    public void AddItems(IEnumerable<ShoppingCartItem> shoppingCartItems, IEventService eventService)
     {
         foreach (var cartItem in shoppingCartItems)
-            this._shoppingCartItems.Add(cartItem);
+            if(this._shoppingCartItems.Add(cartItem))
+                eventService.Raise("ShoppingCartItemAdded", new {UserId, cartItem});
     }
 
-    public void RemoveItemsFromCart(int[] catalogueIds)
+    public void RemoveItems(int[] catalogueIds, IEventService eventService)
     {
-        this._shoppingCartItems
-            .RemoveWhere(cartItem => 
-                catalogueIds.Contains(cartItem.CatalogueId));
+        // Find cart item to remove
+        var itemsToRemove = _shoppingCartItems
+            .Where(cartItem => catalogueIds.Contains(cartItem.CatalogueId));
+        
+        foreach (var cartItem in itemsToRemove)
+            if(this._shoppingCartItems.Remove(cartItem))
+                eventService.Raise("ShoppingCartItemRemoved", new {UserId, cartItem});
     }
 }

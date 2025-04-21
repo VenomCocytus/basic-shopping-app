@@ -1,3 +1,5 @@
+using basicShoppingCartMicroservice.Client.ProductCatalog;
+using basicShoppingCartMicroservice.EventFeed.Interface;
 using basicShoppingCartMicroservice.Models;
 using Lombok.NET;
 
@@ -33,10 +35,10 @@ public partial class ShoppingCartService : IShoppingCartService
         
         // Fetch the catalogue information from the Product Catalog microservice
         var shoppingCartItems =
-            await this._productCatalogClient.RetrieveShoppingCartItems(shoppingCartItemIds);
+            await this._productCatalogClient.RetrieveAllShoppingCartItems(shoppingCartItemIds);
         
         // Adding items to the cart
-        shoppingCart.AddItemsToCart(shoppingCartItems, _eventService);
+        shoppingCart.AddItems(shoppingCartItems, _eventService);
         
         // Save the updated cart to the data store
         this._shoppingCartService.Save(shoppingCart);
@@ -50,7 +52,7 @@ public partial class ShoppingCartService : IShoppingCartService
         var shoppingCart = RetrieveUserShoppingCart(userId);
         
         // Removing items to the shopping cart
-        shoppingCart.RemoveItemsFromCart(shoppingCartItemIds, _eventService);
+        shoppingCart.RemoveItems(shoppingCartItemIds, _eventService);
         
         // Save the updated cart to the data store
         this._shoppingCartService.Save(shoppingCart);

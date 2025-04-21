@@ -30,12 +30,12 @@ public abstract class ProductCatalogClient : IProductCatalogClient
 
     public async Task<IEnumerable<ShoppingCartItem>> RetrieveAllShoppingCartItems(int[] productCatalogIds)
     {
-        using var responseMessage = await RequestProductsFromProductCatalog(productCatalogIds);
+        using var responseMessage = await RequestProductsFromProductCatalogService(productCatalogIds);
 
         return await ConvertToShoppingCartItems(responseMessage);
     }
 
-    private async Task<HttpResponseMessage> RequestProductsFromProductCatalog(int[] productCatalogIds)
+    private async Task<HttpResponseMessage> RequestProductsFromProductCatalogService(int[] productCatalogIds)
     {
         
         var productsResource = string.Format(GetProductPathTemplate, 
