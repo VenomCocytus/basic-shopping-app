@@ -1,0 +1,38 @@
+### Deployment ###
+
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: shopping-cart-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shopping-cart-microservice
+  template:
+    metadata:
+      labels:
+        app: shopping-cart-microservice
+    spec:
+      containers:
+        - name: shopping-cart-microservice
+          image: your_unique_registry_name.azurecr.io/shopping-cart:1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+            - containerPort: 8081
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: your_unique_registry_name.azurecr.io/shopping-cart:1.0.0
+spec:
+  type: LoadBalancer
+  ports:
+    - name: shopping-cart-microservice
+      port: 5000
+      targetPort: 8080
+ 
+  selector:
+    app: shopping-cart-microservice

@@ -1,0 +1,75 @@
+# Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping-cart-deployment  # More accurate resource type naming
+spec:
+  replicas: 2  # Minimum for basic high availability
+  strategy:
+    type: RollingUpdate  # Default but explicit
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: shopping-cart-microservice
+  template:
+    metadata:
+      labels:
+        app: shopping-cart-microservice
+        version: v1.0.0  # Version label for canary deployments
+    spec:
+      containers:
+        - name: app-container  # More descriptive name
+          image: your_acr_name.azurecr.io/shopping-cart:1.0.0
+          imagePullPolicy: Always  # Ensures latest image in CI/CD
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: metrics
+              containerPort: 8081
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              value: "Production"
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: http
+            initialDelaySeconds: 15
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: http
+            initialDelaySeconds: 5
+            periodSeconds: 5
+      imagePullSecrets:
+        - name: acr-credentials  # Required for private Azure registry
+---
+# Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: shopping-cart-service  # DNS-compliant name
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "false"  # Azure-specific
+spec:
+  type: LoadBalancer
+  ports:
+    - name: http
+      port: 80  # Standard HTTP port
+      targetPort: 8080
+      protocol: TCP
+    - name: metrics  # Optional metrics endpoint
+      port: 8081
+      targetPort: 8081
+      protocol: TCP
+  selector:
+    app: shopping-cart-microservice
